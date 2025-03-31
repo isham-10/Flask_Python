@@ -10,8 +10,9 @@ def exercice(valeur):
     for i in range(valeur):
         etoiles += '*'
     return etoiles #comm 
-    for i in range(n):
-        print('*' * n)
+def generate_pattern(valeur):
+    for i in range(valeur):
+        print('*' * valeur)
 
 
 
