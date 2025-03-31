@@ -13,6 +13,7 @@ def exercice(valeur):
 def generate_pattern(valeur):
     for i in range(valeur):
        return '</br>*'
+       generate_pattern(5) 
 
 
 
