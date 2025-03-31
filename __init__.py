@@ -11,9 +11,8 @@ def exercice(valeur):
         for i in range(j+1): 
             etoiles += '+'
         etoiles += '<br>' 
-       for i in range(valeur-j):
-            etoiles += '*'
-  
+        for i in range(valeur-j):
+            etoiles += '*'  
     return etoiles
 
 if __name__ == "__main__":
