@@ -13,7 +13,7 @@ def exercice(valeur):
         etoiles += '<br>' 
 
         for i in range(valeur-j):
-            etoiles += ' '
+            etoiles += '+'
   
     return etoiles
 
