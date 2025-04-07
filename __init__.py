@@ -1,18 +1,16 @@
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route('/<path:valeurs>')
 def exercice(valeurs):
     liste_nombres = valeurs.split('/')
-    return str(resultat)
-    liste_nombres = [int(n) for n in liste_nombres]
-    max_value = liste_nombres[0]
-    for n in liste_nombres:
-        if n > max_value:
-            max_value = n
+    liste_nombres = [int(nombre) for nombre in liste_nombres]
+    valeur_max = liste_nombres[0]
+    for nombre in liste_nombres:
+        if nombre > valeur_max:
+            valeur_max=nombre
+    return str(valeur_max)
 
-    return f"La somme est : {sum(liste_nombres)}, La valeur maximale est : {max_value}"
-
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(host='0.0.0.0')
