@@ -5,18 +5,18 @@ app = Flask(__name__)
 
 @app.route('/<int:valeur>')
 def exercice(valeur):
-    a, b = 0, 1
-    count = [str(0)] 
+a = 0
+    count = [str(a)]
 
     if valeur > 1:
-        count.append(str(b))
+        count.append(str(1))
 
     for _ in range(2, valeur):
-        c = a + b
-        count.append(str(c))
-        a, b = b, c
+        a = int(count[-1]) + int(count[-2])
+        count.append(str(a))
 
-    return ', '.join(count)  
+    return ', '.join(count)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
