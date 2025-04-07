@@ -5,6 +5,11 @@ app = Flask(__name__)
 
 
 @app.route('/<int:valeur>')
+def index():
+    n = request.args.get('n', default=5, type=int)
+    result = generate_pyramid(n)
+    return f'<pre>{result}</pre>'
+
 def generate_pyramid(n):
     pyramid = ''
     for i in range(1, n + 1):
