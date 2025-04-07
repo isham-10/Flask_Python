@@ -1,6 +1,6 @@
 from flask import Flask
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route('/<path:valeurs>')
 def exercice(valeurs):
@@ -12,5 +12,5 @@ def exercice(valeurs):
             valeur_max=nombre
     return str(valeur_max)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(host='0.0.0.0')
