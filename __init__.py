@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-
 def generate_pyramid(n):
     pyramid = ''
     for i in range(1, n + 1):
