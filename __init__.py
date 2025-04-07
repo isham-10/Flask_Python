@@ -4,18 +4,24 @@ from flask import json
 app = Flask(__name__)                                                                                                                  
 
 @app.route('/<int:valeur>')
-def exercice(valeur):
-    etoiles = ''
+def fibonacci_sequence(n):
+    # Initialiser les deux premiers termes de la suite de Fibonacci
+    a, b = 0, 1
+    sequence = [a, b]
     
-    for j in range(1, valeur + 1):
-        etoiles += '&nbsp' * (valeur - j)
-        for i in range(1, j + 1):
-            etoiles += str(i)
-        for i in range(j - 1, 0, -1):
-            etoiles += str(i)
-        
-        etoiles += '<br>'
-    return etoiles
+    # Générer la suite de Fibonacci jusqu'au nième terme
+    for _ in range(2, n):
+        a, b = b, a + b
+        sequence.append(b)
+    
+    return sequence
+
+# Définir la valeur de n
+n = 7
+
+# Générer et afficher la suite de Fibonacci jusqu'au nième terme
+print(fibonacci_sequence(n))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
