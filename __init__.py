@@ -12,7 +12,7 @@ def calculate_sum(n):
             continue
         if i % 5 == 0 or i % 7 == 0:
             somme += i
-        if somme => 5000:
+        if somme <= 5000:
             break
 
     return somme
