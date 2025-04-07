@@ -4,25 +4,26 @@ from flask import json
 app = Flask(__name__)
 
 @app.route('/<int:valeur>')
-def calculate_sum(n):
+def calcul_somme_securise(n):
     somme = 0
+    nombres_ajoutes = []
 
-    for i in range(1, n + 1):
-        if i % 11 == 0:
+    for nombre in range(1, n + 1):
+        if nombre % 11 == 0:
             continue
-        if i % 5 == 0 or i % 7 == 0:
-            if somme + i > 5000:
-                break
-            somme += i
 
-    return somme
+        if nombre % 5 == 0 or nombre % 7 == 0:
+            # Vérifie si l'ajout dépasserait 5000
+            if somme + nombre > 5000:
+                break  # Arrêt avant dépassement
 
-# Demander à l'utilisateur de saisir la valeur de n
-n = int(input("Entrez la valeur de n : "))
+            somme += nombre
+            nombres_ajoutes.append(str(nombre))
 
-# Calculer la somme et afficher le résultat
-somme_finale = calculate_sum(n)
-print(f"La somme finale est : {somme_finale}")
+    return (
+        f"Résultat pour n={n}<br><br>"
+        f"Nombres ajoutés: {', '.join(nombres_ajoutes)}<br><br>"
+        f"Somme finale: {somme} (garantie ≤ 5000)"
   
 
 if __name__ == "__main__":
