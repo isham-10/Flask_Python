@@ -32,5 +32,5 @@ def calcul_suite():
 
     return f"Suite pour n={n} : {', '.join(map(str, suite))}"
 
-if name == 'main':
-    app.run(host='0.0.0.0', port=5000, debug=True
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=True)
