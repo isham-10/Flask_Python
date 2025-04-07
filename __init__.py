@@ -4,19 +4,26 @@ from flask import json
 app = Flask(__name__)
 
 @app.route('/<int:valeur>')
-def exercice(valeur):
-    a, b = 0, 1
-    count = [str(0)] 
+def calculate_sum(n):
+    somme = 0
 
-    if valeur > 1:
-        count.append(str(b))
+    for i in range(1, n + 1):
+        if i % 11 == 0:
+            continue
+        if i % 5 == 0 or i % 7 == 0:
+            if somme + i > 5000:
+                break
+            somme += i
 
-    for _ in range(2, valeur):
-        c = a + b
-        count.append(str(c))
-        a, b = b, c
+    return somme
 
-    return ', '.join(count)  
+# Demander à l'utilisateur de saisir la valeur de n
+n = int(input("Entrez la valeur de n : "))
+
+# Calculer la somme et afficher le résultat
+somme_finale = calculate_sum(n)
+print(f"La somme finale est : {somme_finale}")
+  
 
 if __name__ == "__main__":
     app.run(debug=True)
