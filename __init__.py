@@ -4,7 +4,7 @@ from flask import json
 app = Flask(__name__)                                                                                                                  
 
 
-@app.route('/<int:valeur>')
+@app.route('/')
 def index():
     n = request.args.get('n', default=5, type=int)
     result = generate_pyramid(n)
