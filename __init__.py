@@ -3,25 +3,34 @@ from flask import render_template
 from flask import json                                                                                                                                     
 app = Flask(__name__)                                                                                                                  
 
-@app.route('/<int:valeur>')
-def fibonacci_sequence(n):
-    # Initialiser les deux premiers termes de la suite de Fibonacci
-    a, b = 0, 1
-    sequence = [a, b]
-    
-    # Générer la suite de Fibonacci jusqu'au nième terme
-    for _ in range(2, n):
-        a, b = b, a + b
-        sequence.append(b)
-    
-    return sequence
+from flask import Flask, request
 
-# Définir la valeur de n
-n = 7
+app = Flask(name)
 
-# Générer et afficher la suite de Fibonacci jusqu'au nième terme
-print(fibonacci_sequence(n))
+@app.route('/')
+def formulaire():
+    return '''
+    <form action="/suite" method="get">
+        Entrez un nombre : <input type="number" name="valeur" min="2" required>
+        <input type="submit" value="Générer">
+    </form>
+    '''
 
+@app.route('/suite')
+def calcul_suite():
+    try:
+        n = int(request.args.get('valeur', 2))
+    except ValueError:
+        return "Veuillez entrer un nombre valide", 400
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    if n < 2:
+        return "Le nombre doit être au moins 2", 400
+
+    suite = [0, 1]
+    for i in range(2, n):
+        suite.append(suite[-1] + suite[-2])
+
+    return f"Suite pour n={n} : {', '.join(map(str, suite))}"
+
+if name == 'main':
+    app.run(host='0.0.0.0', port=5000, debug=True
