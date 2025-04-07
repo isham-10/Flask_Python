@@ -19,7 +19,7 @@ for i in range(1, n + 1):
     # Nombres décroissants
     for j in range(i - 1, 0, -1):
 print(j, end='')
-    return etoiles
+   
 
 if __name__ == "__main__":
   app.run(debug=True)
