@@ -3,29 +3,20 @@ from flask import render_template
 from flask import json                                                                                                                                     
 app = Flask(__name__)
 
-app = Flask(_name_)
+@app.route('/<int:valeur>')
+def exercice(valeur):
+    a, b = 0, 1
+    count = [str(0)] 
 
-@app.route('/<int:n>')
-def exercice(n):
-    seq = ['0', '1'] if n > 1 else ['0']
+    if valeur > 1:
+        count.append(str(b))
 
-    for _ in range(2, n):
-        seq.append(str(int(seq[-1]) + int(seq[-2])))
+    for _ in range(2, valeur):
+        c = a + b
+        count.append(str(c))
+        a, b = b, c
 
-    return ', '.join(seq[:n])
-app = Flask(_name_)
-
-@app.route('/<int:n>')
-def exercice(n):
-    seq = ['0', '1'] if n > 1 else ['0']
-
-    for _ in range(2, n):
-        seq.append(str(int(seq[-1]) + int(seq[-2])))
-
-    return ', '.join(seq[:n])
-
-
-
+    return ', '.join(count)  
 
 if __name__ == "__main__":
     app.run(debug=True)
