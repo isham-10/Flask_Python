@@ -5,20 +5,15 @@ app = Flask(__name__)
 
 
 @app.route('/<int:valeur>')
-def exercice(valeur):
-    etoiles = ''
-for i in range(1, n + 1):
-    # Espaces avant les nombres
-    for j in range(n - i):
-        print(' ', end='')
-    
-    # Nombres croissants
-    for j in range(1, i + 1):
-        print(j, end='')
-    
-    # Nombres décroissants
-    for j in range(i - 1, 0, -1):
-print(j, end='')
+def generate_pyramid(n):
+    pyramid = ''
+    for i in range(1, n + 1):
+        pyramid += ' ' * (n - i)
+        pyramid += ''.join(str(j) for j in range(1, i + 1))
+        pyramid += ''.join(str(j) for j in range(i - 1, 0, -1))
+        pyramid += '\n'
+    return pyramid
+
    
 
 if __name__ == "__main__":
