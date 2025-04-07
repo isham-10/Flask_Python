@@ -1,9 +1,8 @@
 from flask import Flask
-from flask import render_template
-from flask import json                                                                                                                                     
-app = Flask(__name__)
 
-@app.route('/<int:valeur>')
+app = Flask(name)
+
+@app.route('/<int:n>')
 def calcul_somme_securise(n):
     somme = 0
     nombres_ajoutes = []
@@ -24,7 +23,7 @@ def calcul_somme_securise(n):
         f"Résultat pour n={n}<br><br>"
         f"Nombres ajoutés: {', '.join(nombres_ajoutes)}<br><br>"
         f"Somme finale: {somme} (garantie ≤ 5000)"
-  
+    )
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if name == 'main':
+    app.run(host='0.0.0.0')
