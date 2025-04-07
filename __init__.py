@@ -3,24 +3,27 @@ from flask import render_template
 from flask import json                                                                                                                                     
 app = Flask(__name__)
 
-@app.route('/<int:valeur>')
-def calculate_sum(n):
-    somme = 0
+app = Flask(_name_)
 
-    for i in range(1, n + 1):
-        if i % 11 == 0:
-            continue
-        if i % 5 == 0 or i % 7 == 0:
-            somme += i
-        if somme <= 5000:
-            break
+@app.route('/<int:n>')
+def exercice(n):
+    seq = ['0', '1'] if n > 1 else ['0']
 
-    return somme
+    for _ in range(2, n):
+        seq.append(str(int(seq[-1]) + int(seq[-2])))
 
-n = int(input("Entrez la valeur de n : "))
+    return ', '.join(seq[:n])
+app = Flask(_name_)
 
-somme_finale = calculate_sum(n)
-print(f"La somme finale est : {somme_finale}")
+@app.route('/<int:n>')
+def exercice(n):
+    seq = ['0', '1'] if n > 1 else ['0']
+
+    for _ in range(2, n):
+        seq.append(str(int(seq[-1]) + int(seq[-2])))
+
+    return ', '.join(seq[:n])
+
 
 
 
