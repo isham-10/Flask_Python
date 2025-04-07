@@ -4,17 +4,14 @@ from flask import json
 app = Flask(__name__)                                                                                                                  
 
 
-@app.route('/')
-def generate_pyramid(n):
-    pyramid = ''
-    for i in range(1, n + 1):
-        pyramid += ' ' * (n - i)
-        pyramid += ''.join(str(j) for j in range(1, i + 1))
-        pyramid += ''.join(str(j) for j in range(i - 1, 0, -1))
-        pyramid += '\n'
-    return pyramid
-
-   
+@app.route('/<int:valeur>')
+def exercice(valeur):
+    etoiles = ''
+    for j in range(valeur):
+        for i in range(valeur):
+            etoiles += '*'
+        etoiles += '<br>'
+    return etoiles
 
 if __name__ == "__main__":
   app.run(debug=True)
