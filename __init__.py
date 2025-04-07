@@ -5,10 +5,6 @@ app = Flask(__name__)
 @app.route('/<path:valeurs>')
 def exercice(valeurs):
     liste_nombres = valeurs.split('/')
-    liste_nombres = [int(n) for n in liste_nombres]
-    resultat = 0
-    for n in liste_nombres:
-        resultat = resultat + n
     return str(resultat)
     liste_nombres = [int(n) for n in liste_nombres]
     max_value = liste_nombres[0]
